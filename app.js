@@ -37,7 +37,7 @@ define([
 		Categories.fetchCategoryMembers(category, function(error, articles) {
 
 			// Clear display and check for errors.
-			$("#msgid").html("");
+			$("#article_list").html("");
 			if (error) {
 				$("#error").text(error);
 				return;
@@ -65,7 +65,7 @@ define([
 	function displayArticles(articles) {
 		var formatted = Renderer.formatArticleLines(articles);
 
-		$("#msgid").html(formatted);
+		$("#article_list").html(formatted);
 		$("#error").text("");
 
 		// FIXME: seems silly to have to reattach every time?
