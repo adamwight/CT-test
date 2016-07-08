@@ -20,14 +20,18 @@ define([
 			var category = $(this).val();
 			refreshCategory(category);
 		},
-	});
-	$("#category").change(function () {
+	}).keyup(function (e) {
+		// Unfortunate workaround for autocomplete thing
+		if (e.which === 13) {
+			$(".ui-menu-item").hide();
+		}
+	}).change(function () {
 		// TODO: reuse from above.
 		var category = $(this).val();
 		refreshCategory(category);
 	});
 
-	// Backdoor for debugging: pass parameter "debug=1".
+	// Backdoor for debugging: pass parameter "?debug=1".
 	if (/debug/.exec(window.location.href)) {
 		refreshCategory("Pythagoreans");
 	}
@@ -42,7 +46,7 @@ define([
 				$("#error").text(error);
 				return;
 			}
-			if (articles.length == 0) {
+			if (articles.length === 0) {
 				$("#error").text("No articles in category.");
 				return;
 			}

@@ -3,6 +3,19 @@
 	margin-right: 20%;
 }
 
+#category {
+	font-size: 150%;
+	padding: .5em;
+}
+
+.ui-menu .ui-menu-item {
+	font-size: 150%;
+}
+
+#article_list {
+	padding-top: 1em;
+}
+
 #error {
 	color: red;
 	font-style: italic;
@@ -48,4 +61,12 @@
 
 .missing {
 	color: #f99;
+}
+
+.footer {
+	z-index: -1;
+	bottom: 0px;
+	right: 0px;
+	position: fixed;
+	margin: 2em;
 }
