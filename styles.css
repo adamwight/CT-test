@@ -8,10 +8,10 @@
 	font-size: 150%;
 	padding: .5em;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .score {
-	font-color: #999;
 	display: inline-block;
 }
 
@@ -19,7 +19,11 @@
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: inline-block;
-	font-color: #999;
+	color: #999;
 	white-space: nowrap;
 	max-width: 100%;
+}
+
+.missing {
+	color: #f99;
 }

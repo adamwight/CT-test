@@ -1,5 +1,7 @@
 Code challenge submission, in response to `https://www.mediawiki.org/wiki/User:Kaldari/Task_2`.
 
+Hosted at https://adamwight.github.io/CT-test/
+
 Limitations
 ===========
 * No i18n support, English is hardcoded everywhere.
@@ -8,6 +10,9 @@ Limitations
 * Crappy aesthetics.
 * Probably more readable if it used promises, I'm still puzzling over lambda programming.
 * Doesn't resolve article redirects.
+* I didn't have enough time to find the healthiest and best libraries, so took
+  a strategy of minimizing the interface with each.
+
 
 
 Licenses

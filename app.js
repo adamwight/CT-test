@@ -1,10 +1,5 @@
-// Didn't have enough time to find the healthiest and best libraries, so minimized the interface with each.
-
 requirejs.config({
-	"paths": [
-		".",
-		"lib",
-	],
+	"paths": [".", "lib"],
 });
 
 define([
@@ -60,7 +55,7 @@ define([
 						article.readability = Readability.score(article.extract);
 					}
 				});
-				articles.sort(function (a, b) { return a.readability - b.readability; });
+				articles = articles.sort(function (a, b) { return b.readability - a.readability; });
 
 				displayArticles(articles);
 			});
@@ -72,5 +67,19 @@ define([
 
 		$("#msgid").html(formatted);
 		$("#error").text("");
+
+		// FIXME: seems silly to have to reattach every time?
+		applyUiFlair();
+	}
+
+	function applyUiFlair() {
+		// UI flair
+		$(".article").click(function () {
+			var title = $(this).find(".title").text();
+			console.log(title);
+			// TODO: Use more robust title->URL helper.
+			window.location = config.baseURL + "/wiki/" + title;
+			return false;
+		});
 	}
 });

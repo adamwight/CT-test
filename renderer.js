@@ -6,11 +6,13 @@ define([
 ], function (Mustache) {
 
 	// See fixme above.
-	var articleTemplate = "<div>" +
+	var articleTemplate = "<div class=\"article\">" +
 		"<div class=\"title\">{{ title }}</div>" +
 		"<div class=\"score\">({{ readability }})</div>" +
-		"<div class=\"extract\">{{ extract }}</div>" +
-		"</div>";
+		"<div class=\"extract\">{{ extract }}{{^ extract }}" +
+			"<span class=\"missing\">** No article extract found **</span>{{/ extract }}" +
+		"</div>" +
+	"</div>";
 
 	return {
 
