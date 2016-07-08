@@ -1,0 +1,25 @@
+#error {
+	color: red;
+	font-style: italic;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 150%;
+	padding: .5em;
+	display: inline-block;
+}
+
+.score {
+	font-color: #999;
+	display: inline-block;
+}
+
+.extract {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inline-block;
+	font-color: #999;
+	white-space: nowrap;
+	max-width: 100%;
+}

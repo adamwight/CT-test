@@ -1,0 +1,32 @@
+From 7aeac78272d002f9b6c94511aeb2d11d2b3ddcb6 Mon Sep 17 00:00:00 2001
+From: Adam Roses Wight <awight@wikimedia.org>
+Date: Fri, 8 Jul 2016 11:17:57 -0700
+Subject: [PATCH] Remove outer namespace thing I don't know how to deal with
+
+Just don't get it.  Maybe an npm thing?  I've stripped the closure and
+the main class exports nicely now, under requirejs.
+---
+ index.js | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/index.js b/text_statistics.js
+index e2c1059..7ac110d 100644
+--- a/index.js
++++ b/text_statistics.js
+@@ -4,8 +4,6 @@
+ // https://github.com/DaveChild/Text-Statistics
+ 
+ 
+-(function(glob) {
+-	
+ 	function cleanText(text) {
+ 		// all these tags should be preceeded by a full stop. 
+ 		var fullStopTags = ['li', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'dd'];
+@@ -234,4 +232,3 @@
+ 	}
+ 	
+ 	(typeof module != "undefined" && module.exports) ? (module.exports = textStatistics) : (typeof define != "undefined" ? (define("textstatistics", [], function() { return textStatistics; })) : (glob.textstatistics = textStatistics));
+-})(this);
+-- 
+2.1.4
+
