@@ -14,7 +14,9 @@ define([
 	"lib/jquery-ui/jquery-ui",
 ], function (config, Categories, Extracts, Readability, Renderer) {
 
-	function refreshCategory(category) {
+	function refreshCategory() {
+		var category = $("#category").val();
+
 		Categories.fetchCategoryMembers(category, function(error, articles) {
 
 			// Clear display and check for errors.
@@ -78,23 +80,17 @@ define([
 	$("#category").autocomplete({
 		source: Categories.fetchCompletions,
 
-		select: function () {
-			var category = $(this).val();
-			refreshCategory(category);
-		},
+		select: refreshCategory,
 	}).keyup(function (e) {
 		// Unfortunate workaround for autocomplete thing
 		if (e.which === 13) {
 			$(".ui-menu-item").hide();
 		}
-	}).change(function () {
-		// TODO: reuse from above.
-		var category = $(this).val();
-		refreshCategory(category);
-	});
+	}).change(refreshCategory);
 
 	// Backdoor for debugging: pass parameter "?debug=1".
 	if (/debug/.exec(window.location.href)) {
-		refreshCategory("Pythagoreans");
+		$("#category").val("Pythagoreans");
+		refreshCategory();
 	}
 });
