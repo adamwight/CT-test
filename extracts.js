@@ -31,7 +31,7 @@ define([
 				params = {
 					action: "query", prop: "extracts", explaintext: true,
 					exsectionformat: "plain", exintro: false,
-					pageids: pageids.join("|"),
+					pageids: pageids.join("|"), redirects: true,
 					// (Seems buggy that exlimit defaults to 1?)
 					exlimit: "max"
 				};

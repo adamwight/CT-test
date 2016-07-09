@@ -9,7 +9,6 @@ Limitations
 ===========
 * No automated tests.
 * No i18n support, English is hardcoded everywhere.
-* Doesn't resolve article redirects.
 * No subcategory handling.
 * No result pager, so we stop around 50 articles.
 * No way to invert sort.
