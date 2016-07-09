@@ -21,6 +21,20 @@
 	font-style: italic;
 }
 
+#article_container {
+	position: relative;
+}
+
+#spinner {
+	background: rgba(255,255,255,0.5) url(lib/loading.io-spinner.svg) center center no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	min-height: 10em;
+	right: 0;
+	display: none;
+}
+
 .title {
 	font-weight: bold;
 	font-size: 150%;

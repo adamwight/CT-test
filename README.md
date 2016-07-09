@@ -11,6 +11,7 @@ Limitations
 * Doesn't resolve article redirects.
 * I didn't have enough time to find the healthiest and best third-party
   libraries, so I used a strategy of minimizing the interface with each.
+* No automated tests.
 
 
 Licenses
@@ -26,5 +27,3 @@ Contributed `lib`:
 * (MIT) https://github.com/requirejs/text
 * (MIT) https://jquery.org/license/
 * (CC0-ish) http://loading.io/ spinner
-
-=======

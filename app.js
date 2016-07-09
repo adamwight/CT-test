@@ -27,25 +27,23 @@ define([
 		Categories.fetchCategoryMembers(category, function(error, articles) {
 
 			// Clear display and start spinner.
-			$("#article_list").html("<img src=\"lib/loading.io-spinner.svg\" alt=\"working...\" />");
 			$("#error").text("");
+			$("#spinner").toggle(true);
 
 			// Check for errors.
 			if (error) {
-				$("#article_list").text("");
-				$("#error").text(error);
+				displayError(error);
 				return;
 			}
 			if (articles.length === 0) {
-				$("#article_list").text("");
-				$("#error").text("No articles in category.");
+				displayError("No articles in category.");
 				return;
 			}
 
+			// Take the list of articles and get extracts of the introductory text.
 			Extracts.fetchArticleExtracts(articles, function(error, articles) {
 				if (error) {
-					$("#article_list").text("");
-					$("#error").text("Couldn't fetch extracts: " + error);
+					displayError("Couldn't fetch extracts: " + error);
 					return;
 				}
 
@@ -57,18 +55,32 @@ define([
 					return a.readability - b.readability;
 				});
 
+				// Paint results into the page.
 				displayArticles(articles);
 			});
 		});
 	}
 
+	/**
+	 * Draw rendered list of articles into the page.
+	 */
 	function displayArticles(articles) {
 		var formatted = Renderer.formatArticleLines(articles);
 
 		$("#article_list").html(formatted);
+		$("#spinner").toggle(false);
 		$("#error").text("");
 	}
 
+	function displayError(error) {
+		$("#article_list").text("");
+		$("#spinner").toggle(false);
+		$("#error").text(error);
+	}
+
+	/**
+	 * Set up UI behaviors.
+	 */
 	function attachUiHandlers() {
 		// Articles link to Wikipedia.
 		$("#article_list").on("click", ".article", function () {
