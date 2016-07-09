@@ -1,4 +1,12 @@
-// Handle Wikipedia categories
+/**
+ * Handle Wikipedia categories
+ *
+ * @module Categories
+ *
+ * @callback Categories~cb
+ * @param {string} error
+ * @param {Array} article objects
+ */
 
 define([
 	"config",
@@ -11,9 +19,12 @@ define([
 		{baseURL: config.baseURL, apiPath: config.apiPath});
 
 	return {
+		/**
+		 * @param {string} category Title of category.
+		 * @param {Categories~cb} doneCallback Handle results.
+		 */
 		fetchCategoryMembers: function (category, doneCallback) {
 
-			// TODO: fast path for empty categories
 			var _continueObj = _continueObj || {continue: ""},
 				// FIXME: escape category for API?
 				category = "Category:" + category,
@@ -58,3 +69,10 @@ define([
 		},
 	};
 });
+
+/**
+ * This callback...
+ * @callback fetchCategoryMembers~cb
+ * @param {string} error
+ * @param {Array} article objects
+ */

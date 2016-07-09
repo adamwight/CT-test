@@ -13,8 +13,6 @@ Limitations
 * I didn't have enough time to find the healthiest and best third-party
   libraries, so I used a strategy of minimizing the interface with each.
 * Occasional race condition, sometimes jquery cannot be loaded.
-* Need to verify that the readability scoring engine is doing the right math,
-  it seems to be off on the few samples I tried.
 
 
 Licenses

@@ -19,10 +19,11 @@ define([
 
 		Categories.fetchCategoryMembers(category, function(error, articles) {
 
-			// Clear display and check for errors.
-			$("#article_list").html("<img src=\"lib/loading.io-spinner.svg\" />");
+			// Clear display and start spinner.
+			$("#article_list").html("<img src=\"lib/loading.io-spnner.svg\" alt=\"working...\" />");
 			$("#error").text("");
 
+			// Check for errors.
 			if (error) {
 				$("#article_list").text("");
 				$("#error").text(error);
@@ -35,6 +36,11 @@ define([
 			}
 
 			Extracts.fetchArticleExtracts(articles, function(error, articles) {
+				if (error) {
+					$("#article_list").text("");
+					$("#error").text("Couldn't fetch extracts: " + error);
+					return;
+				}
 
 				// Estimate readability and sort with most readable first.
 				$.map(articles, function (article) {
@@ -78,13 +84,14 @@ define([
 
 	// Give category input some behaviors.
 	$("#category").autocomplete({
+		// Autocomplete the category titles.
 		source: Categories.fetchCompletions,
-
 		select: refreshCategory,
 	}).keyup(function (e) {
-		// Unfortunate workaround for autocomplete thing
+		// Unfortunate workaround, do special stuff for the <enter> key-up.
 		if (e.which === 13) {
 			$(".ui-menu-item").hide();
+			refreshCategory();
 		}
 	}).change(refreshCategory);
 
