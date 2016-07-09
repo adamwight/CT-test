@@ -23,7 +23,10 @@ Code by Adam Wight is CC-NC.
 Contributed `lib`:
 (MIT) https://github.com/brettz9/mediawiki-js
 (MIT, patched by adamw) https://github.com/cgiffard/TextStatistics.js
-	* TODO: include patch
+(MIT) https://github.com/janl/mustache.js/blob/master/LICENSE
+(CC0) https://github.com/requirejs/requirejs/blob/master/LICENSE
+(MIT) https://github.com/requirejs/text
 (MIT) https://jquery.org/license/
+(CC0-ish) http://loading.io/ spinner
 
 =======

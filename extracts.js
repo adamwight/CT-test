@@ -5,7 +5,7 @@
 define([
 	"config",
 	"lib/MediawikiJS.js",
-	"lib/jquery.js",
+	"lib/jquery.js"
 ], function (config) {
 
 	var mwjs = MediaWikiJS(

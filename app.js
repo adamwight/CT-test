@@ -1,9 +1,12 @@
-// Application startup and UI controllers.
-
 requirejs.config({
 	"paths": [".", "lib"]
 });
 
+/**
+ * Application startup and UI controllers.
+ *
+ * @module Main
+ */
 define([
 	"config",
 	"categories",
@@ -14,6 +17,7 @@ define([
 	"lib/jquery-ui/jquery-ui"
 ], function (config, Categories, Extracts, Readability, Renderer) {
 
+	/** FOO */
 	function refreshCategory() {
 		var category = $("#category").val();
 

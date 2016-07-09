@@ -1,11 +1,5 @@
 /**
- * Handle Wikipedia categories
- *
- * @module Categories
- *
- * @callback Categories~cb
- * @param {string} error
- * @param {Array} article objects
+ * Retrieve categories from Wikipedia
  */
 
 define([
@@ -18,10 +12,15 @@ define([
 	var mwjs = MediaWikiJS(
 		{baseURL: config.baseURL, apiPath: config.apiPath});
 
-	return {
+	/**
+	 * @exports Categories
+	 */
+	var Categories = {
 		/**
+		 * Get all articles in a category.
+		 *
 		 * @param {string} category Title of category.
-		 * @param {Categories~cb} doneCallback Handle results.
+		 * @param {module:Categories~fetchCategoryMembersCallback} doneCallback Handle results.
 		 */
 		fetchCategoryMembers: function (category, doneCallback) {
 
@@ -52,6 +51,10 @@ define([
 			});
 		},
 
+		/**
+		 * Search for categories which complete the current term.  Suitable for
+		 * use as a jquery ui autocomplete "source" callback.
+		 */
 		fetchCompletions: function(request, response) {
 			var params = {
 				'action': "opensearch",
@@ -67,11 +70,13 @@ define([
 			});
 		}
 	};
+	return Categories;
 });
 
 /**
- * This callback...
- * @callback fetchCategoryMembers~cb
- * @param {string} error
+ * Do something with article list.
+ *
+ * @callback module:Categories~fetchCategoryMembersCallback
+ * @param {string} error Error message.  True-ish if any of our API calls failed.
  * @param {Array} article objects
  */
