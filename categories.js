@@ -23,7 +23,6 @@ define([
 		fetchCategoryMembers: function (category, doneCallback) {
 
 			var _continueObj = _continueObj || {continue: ""},
-				// FIXME: escape category for API?
 				fullTitle = "Category:" + category,
 				params = {
 					action: 'query', list: 'categorymembers', cmtitle: fullTitle, cmlimit: 50
@@ -31,7 +30,7 @@ define([
 			
 			mwjs.send(params, function (data) {
 
-				console.debug("Raw response to category listing:", data);
+				console.debug("Response to category listing:", data);
 
 				if (data.error) {
 					doneCallback("Couldn't get articles in category: " + data.error.info);
@@ -61,10 +60,18 @@ define([
 			};
 
 			mwjs.send(params, function (data) {
-				var unNamespacedCategoryTitles = $.map(data[1], function(title) {
-					return title.replace(/^Category:/, "");
-				});
-				response(unNamespacedCategoryTitles);
+				if (data.error) {
+					// TODO: We should inform the user as well, with a generic exception
+					console.error("Couldn't fetch completions: " + data.error.info);
+					return;
+				}
+				var categoryTitles = data[1],
+					// Strip namespace from title for display in the menu.
+					unNamespacedTitles = $.map(categoryTitles, function(title) {
+						return title.replace(/^Category:/, "");
+					});
+
+				response(unNamespacedTitles);
 			});
 		}
 	};

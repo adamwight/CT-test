@@ -1,6 +1,9 @@
 Code challenge submission, in response to `https://www.mediawiki.org/wiki/User:Kaldari/Task_2`.
 
-Hosted at https://adamwight.github.io/CT-test/
+cat-ache (CAT' ayk) - Review the most unreadable articles in a category.
+
+Hosted at https://adamwight.github.io/cat-ache
+Code at https://github.com/adamwight/cat-ache
 
 Limitations
 ===========
@@ -12,6 +15,8 @@ Limitations
 * No way to invert sort.
 * I didn't have enough time to find the healthiest and best third-party
   libraries, so I used a strategy of minimizing the interface with each.
+* Note that we're usually fetching the first paragraph of the summary, not the
+  first paragraph of the article body itself.
 
 
 Licenses

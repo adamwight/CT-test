@@ -10,8 +10,6 @@ define([
 	/**
 	 * Snip article extracts via an API.
 	 *
-	 * Note that we're usually fetching the intro, not the first paragraph of the article itself.
-	 *
 	 * @exports Extractor
 	 */
 	var Extractor = {
@@ -29,18 +27,20 @@ define([
 			_bufferedArticles = _bufferedArticles || [];
 			_depth = 0;
 
-			// (Seems buggy that exlimit defaults to 1?)
 			var pageids = $.map(articles, function (article) { return article.pageid; }),
 				params = {
-					action: "query", prop: "extracts", explaintext: true, exlimit: "max",
-					exsectionformat: "plain", exintro: false, pageids: pageids.join("|")
+					action: "query", prop: "extracts", explaintext: true,
+					exsectionformat: "plain", exintro: false,
+					pageids: pageids.join("|"),
+					// (Seems buggy that exlimit defaults to 1?)
+					exlimit: "max"
 				};
 			$.extend(params, _continueObj);
 
-			console.debug("Making API request:", params);
+			console.debug("Making TextExtracts request:", params);
 			mwjs.send(params, function (data) {
 
-				console.debug("Raw response from extractor:", data);
+				console.debug("Response from extractor:", data);
 
 				if (data.error) {
 					doneCallback("Couldn't extract from articles: " + data.error.info);
@@ -77,5 +77,5 @@ define([
  *
  * @callback fetchArticleExtractsCallback
  * @param {string} error Error message.  True-ish if any of our API calls failed.
- * @param {Object[]} article objects, with the `.extract` property set.
+ * @param {Object[]} article Article objects with the `.extract` property filled in.
  */
