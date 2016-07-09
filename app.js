@@ -27,6 +27,15 @@ define([
 		refreshCategory: function () {
 			var category = $("#category").val();
 
+				// TODO: Refresh our URL to this resource.
+				// currentUrl = $.url(window.location.href),
+				// params = currentUrl.param(),
+				// baseUrl = currentUrl.;
+
+			// params["category"] = $(this).val();
+			// var newUrl = "?" + $.param(params);
+			// window.location = 
+
 			Categories.fetchCategoryMembers(category, function(error, articles) {
 
 				// Clear display and start spinner.
