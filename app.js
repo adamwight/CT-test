@@ -101,7 +101,7 @@ define([
 		}).keyup(function (e) {
 			// Unfortunate workaround, do special stuff for the <enter> key-up.
 			if (e.which === 13) {
-				$(".ui-menu-item").hide();
+				$("#category").blur().focus();
 				refreshCategory();
 			}
 		}).change(refreshCategory);
