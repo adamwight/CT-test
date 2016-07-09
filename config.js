@@ -20,7 +20,7 @@ define([], function() {
 
 		/**
 		 * @property {string} readabilityMeasure Select which readability measure
-		 * we'll use.  Constant must match the string in `readability.js`.
+		 * we'll use.  Constant must match the string enum in `readability.js`.
 		 * @default
 		 */
 		readabilityMeasure: "flesch-kincaid"

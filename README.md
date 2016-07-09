@@ -1,6 +1,6 @@
 Code challenge submission, in response to `https://www.mediawiki.org/wiki/User:Kaldari/Task_2`.
 
-cat-ache (CAT' ayk) - Review the most unreadable articles in a category.
+cat-ache (/KÆʔ eɪk/) - Review the most unreadable articles in a category.
 
 Hosted at https://adamwight.github.io/cat-ache
 Code at https://github.com/adamwight/cat-ache

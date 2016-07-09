@@ -31,6 +31,7 @@
 	display: none;
 }
 
+/* Article records */
 .title {
 	font-weight: bold;
 	font-size: 150%;
@@ -53,7 +54,6 @@
 	white-space: nowrap;
 	max-width: 100%;
 }
-
 .extract:hover {
 	z-index: 1;
 	display: block;
@@ -74,9 +74,9 @@
 }
 
 .footer {
-	z-index: -1;
 	bottom: 0;
 	right: 0;
 	position: fixed;
 	margin: 2em;
+	opacity: 0.5;
 }

@@ -1,5 +1,19 @@
 2016-07-09  Adam Roses Wight <awight@wikimedia.org>
 
+	* renderer.js: switch quote type for less backstroking
+
+2016-07-09  Adam Roses Wight <awight@wikimedia.org>
+
+	* CHANGES.txt, README.md, app.js, categories.js, config.js,
+	doc/app.js.html, doc/categories.js.html, doc/config.js.html,
+	doc/extracts.js.html, doc/index.html, doc/module-Categories.html,
+	doc/module-Extractor.html, doc/module-Main.html,
+	doc/module-Readability.html, doc/module-Renderer.html,
+	doc/module-config.html, doc/readability.js.html,
+	doc/renderer.js.html, extracts.js: error handling; docs; objectize;
+
+2016-07-09  Adam Roses Wight <awight@wikimedia.org>
+
 	* CHANGES.txt, Makefile, doc/app.js.html, doc/categories.js.html,
 	doc/config.js.html, doc/extracts.js.html,
 	doc/fonts/OpenSans-Bold-webfont.svg,
