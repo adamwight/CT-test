@@ -1,3 +1,5 @@
+// Facade wrapping a readability scoring engine.
+
 define([
 	"config",
 	"lib/text_statistics.js",

@@ -1,3 +1,5 @@
+// Handle Wikipedia categories
+
 define([
 	"config",
 	"lib/MediawikiJS.js",

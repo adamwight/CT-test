@@ -1,3 +1,5 @@
+// Format articles into HTML.
+
 define([
 	// FIXME: text loader plugin not working...
 	//"text!article.html.mustache",

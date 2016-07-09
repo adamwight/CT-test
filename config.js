@@ -1,3 +1,5 @@
+// Shared configuration.
+
 define([], function() {
 	return {
 		apiPath: "/w/api.php",

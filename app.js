@@ -1,3 +1,5 @@
+// Application startup and UI controllers.
+
 requirejs.config({
 	"paths": [".", "lib"],
 });
