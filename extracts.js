@@ -2,69 +2,64 @@ define([
 	"config",
 	"lib/MediawikiJS.js",
 	"lib/jquery.js",
-], function (config) { return {
-	fetchArticleExtracts: function (articles, doneCallback, _continueObj) {
+], function (config) {
 
-		// Note that we'll usually be fetching the intro, not the first paragraph of the article itself.
-		//
-		// TODO: Haven't figured out how to make excontinue
-		// handling do its job!  We receive the same, first 20 entries
-		// each request.
-		// var params = {action: 'query', prop: 'extracts', explaintext: true, exlimit: "max", exintro: true, pageids: ids.join("|")};
-		//
-		// So, we emulate continuation here:
-		// TODO.
-		//
-		// (Seems buggy that exlimit defaults to 1?)
+	var extractor = {
+		fetchArticleExtracts: function (articles, doneCallback, _continueObj, _bufferedArticles, _depth) {
+			var _continueObj = _continueObj || {},
+				_bufferedArticles = _bufferedArticles || [],
+				_depth = 0;
 
-		var pageids = $.map(articles, function (article) { return article.pageid; }),
-			params = {
-				action: 'query', prop: 'extracts', explaintext: true, exlimit: "max",
-				exintro: true, pageids: pageids.join("|")
-			};
-		$.extend(params, _continueObj);
+			// Note that we'll usually be fetching the intro, not the first paragraph of the article itself.
+			//
+			// TODO: Haven't figured out how to make excontinue
+			// handling do its job!  We receive the same, first 20 entries
+			// each request.
+			// var params = {action: 'query', prop: 'extracts', explaintext: true, exlimit: "max", exintro: true, pageids: ids.join("|")};
+			//
+			// So, we emulate continuation here:
+			// TODO.
+			//
+			// (Seems buggy that exlimit defaults to 1?)
 
-		console.debug("Making API request:", params);
+			var pageids = $.map(articles, function (article) { return article.pageid; }),
+				params = {
+					action: 'query', prop: 'extracts', explaintext: true, exlimit: "max",
+					exintro: true, pageids: pageids.join("|")
+				};
+			$.extend(params, _continueObj);
 
-		var mwjs = MediaWikiJS(
-			{baseURL: config.baseURL, apiPath: config.apiPath});
+			console.debug("Making API request:", params);
 
-		mwjs.send(params, function (data) {
+			var mwjs = MediaWikiJS(
+				{baseURL: config.baseURL, apiPath: config.apiPath});
 
-			console.debug("Raw response from extractor:", data);
+			mwjs.send(params, function (data) {
 
-			if (data.error) {
-				doneCallback("Couldn't extract from articles: " + data.error.info);
-				return;
-			}
+				console.debug("Raw response from extractor:", data);
 
-			// Zip extracts into article objects.
-			var extractsByPage = data.query.pages;
-			/*
-			 * This would be worthwhile if we wanted any of the information in
-			 * `articles`, but so far it will be redundant with data in the
-			 * extract results.
-			 *
-			 * $.each(articles, function (article) {
-			 * 	var extractObj = extractsByPage[article.pageid];
-			 * 	if (extractObj) {
-			 * 		article.extract = extractObj.extract;
-			 * 	}
-			 * });
-			*/
+				if (data.error) {
+					doneCallback("Couldn't extract from articles: " + data.error.info);
+					return;
+				}
 
-			// But instead, we toss the input object and pass extract results:
-			articles = $.map(extractsByPage, function(article) { return article; });
+				// Zip extracts into article objects.
+				var extractsByPage = data.query.pages,
+					extractedArticles = $.each(extractsByPage, function(pageid, article) {
+						if (article.extract) {
+							_bufferedArticles.push(article);
+						}
+					});
 
-			doneCallback(null, articles);
-
-			// FIXME: continuation is broken.
-			/*
-			 * if (data.continue) {
-			 * 	// TODO: accumulate
-			 * 	fetchExtracts(pageids, data.continue);
-			 * }
-			 */
-		});
-	}
-}; });
+				if (data.continue && ++_depth < 3) {
+					// Recurse a few times and accumulate the continuation.
+					extractor.fetchArticleExtracts(articles, doneCallback, data.continue, _bufferedArticles, _depth);
+				} else {
+					// Respond to our caller with the full results.
+					doneCallback(null, _bufferedArticles);
+				}
+			});
+		}
+	};
+	return extractor;
+});

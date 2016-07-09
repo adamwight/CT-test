@@ -12,6 +12,7 @@ Limitations
 * Doesn't resolve article redirects.
 * I didn't have enough time to find the healthiest and best libraries, so took
   a strategy of minimizing the interface with each.
+* Occasional race condition, sometimes jquery cannot be loaded.
 
 
 

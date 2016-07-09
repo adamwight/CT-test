@@ -57,9 +57,15 @@ define([
 				$.map(articles, function (article) {
 					if (article.extract) {
 						article.readability = Readability.score(article.extract);
+					} else {
+						// Naughty magic number to cause unanalyzed articles to
+						// sink to the bottom of the list.
+						article.readability = 0;
 					}
 				});
-				articles = articles.sort(function (a, b) { return b.readability - a.readability; });
+				articles = articles.sort(function (a, b) {
+					return b.readability - a.readability;
+				});
 
 				displayArticles(articles);
 			});
