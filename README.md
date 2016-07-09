@@ -4,12 +4,12 @@ Hosted at https://adamwight.github.io/CT-test/
 
 Limitations
 ===========
-* Crappy aesthetics.
-* No i18n support, English is hardcoded everywhere.
 * No automated tests.
+* No i18n support, English is hardcoded everywhere.
+* Doesn't resolve article redirects.
 * No subcategory handling.
 * No result pager, so we stop around 50 articles.
-* Doesn't resolve article redirects.
+* No way to invert sort.
 * I didn't have enough time to find the healthiest and best third-party
   libraries, so I used a strategy of minimizing the interface with each.
 

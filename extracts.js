@@ -32,8 +32,8 @@ define([
 			// (Seems buggy that exlimit defaults to 1?)
 			var pageids = $.map(articles, function (article) { return article.pageid; }),
 				params = {
-					action: 'query', prop: 'extracts', explaintext: true, exlimit: "max",
-					exintro: true, pageids: pageids.join("|")
+					action: "query", prop: "extracts", explaintext: true, exlimit: "max",
+					exsectionformat: "plain", exintro: false, pageids: pageids.join("|")
 				};
 			$.extend(params, _continueObj);
 
@@ -47,10 +47,14 @@ define([
 					return;
 				}
 
-				// Zip extracts into article objects.
+				// Accumulate articles.
 				var extractsByPage = data.query.pages,
 					extractedArticles = $.each(extractsByPage, function(pageid, article) {
 						if (article.extract) {
+							// Grab only the first paragraph.
+							article.extract = article.extract.replace(/^(.+?)\n[^]*$/m, "$1");
+
+							// Add to our results list.
 							_bufferedArticles.push(article);
 						}
 					});
