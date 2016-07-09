@@ -1,17 +1,22 @@
-Code challenge submission, in response to `https://www.mediawiki.org/wiki/User:Kaldari/Task_2`.
-
 cat-ache (/KÆʔ eɪk/) - Review the most unreadable articles in a category.
 
-Hosted at https://adamwight.github.io/cat-ache
-Code at https://github.com/adamwight/cat-ache
+This is a code challenge submission, in response to https://www.mediawiki.org/wiki/User:Kaldari/Task_2 .
+
+[hosted demo](https://adamwight.github.io/cat-ache)
+
+[code](https://github.com/adamwight/cat-ache)
+
+[docs](https://adamwight.github.io/cat-ache/doc/)
 
 Limitations
 ===========
 * No automated tests.
 * No i18n support, English is hardcoded everywhere.
 * No subcategory handling.
-* No result pager, so we stop around 50 articles.
-* No way to invert sort.
+* We stop after the first c. 50 articles, so the most unreadable article is
+  chosen out of that set only and remaining category members are omitted from
+  the sort.
+* No way to invert the sort.
 * I didn't have enough time to find the healthiest and best third-party
   libraries, so I used a strategy of minimizing the interface with each.
 * Note that we're usually fetching the first paragraph of the summary, not the

@@ -22,7 +22,7 @@
 }
 
 #spinner {
-	background: rgba(255,255,255,0.5) url(lib/loading.io-spinner.svg) center center no-repeat;
+	background: white rgba(255,255,255,0.5) url(lib/loading.io-spinner.svg) center center no-repeat;
 	position: absolute;
 	top: 0;
 	left: 0;
