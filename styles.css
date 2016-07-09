@@ -4,16 +4,12 @@
 }
 
 #category {
-	font-size: 150%;
 	padding: .5em;
+	margin-bottom: 1em;
 }
-
+#category,
 .ui-menu .ui-menu-item {
 	font-size: 150%;
-}
-
-#article_list {
-	padding-top: 1em;
 }
 
 #error {

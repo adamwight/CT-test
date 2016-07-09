@@ -72,6 +72,9 @@ define([
 		$("#error").text("");
 	}
 
+	/**
+	 * Display an error and clear previous results.
+	 */
 	function displayError(error) {
 		$("#article_list").text("");
 		$("#spinner").toggle(false);
