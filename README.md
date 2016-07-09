@@ -6,14 +6,15 @@ Limitations
 ===========
 * No i18n support, English is hardcoded everywhere.
 * No subcategory handling.
-* No result pager.
+* No result pager, so we stop around 50 articles.
 * Crappy aesthetics.
-* Probably more readable if it used promises, I'm still puzzling over lambda programming.
+* Code might be better if it used promises, I'm still puzzling over lambda programming.
 * Doesn't resolve article redirects.
-* I didn't have enough time to find the healthiest and best libraries, so took
-  a strategy of minimizing the interface with each.
+* I didn't have enough time to find the healthiest and best third-party
+  libraries, so I used a strategy of minimizing the interface with each.
 * Occasional race condition, sometimes jquery cannot be loaded.
-
+* Need to verify that the readability scoring engine is doing the right math,
+  it seems to be off on the few samples I tried.
 
 
 Licenses
