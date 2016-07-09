@@ -49,18 +49,12 @@ define([
 					return;
 				}
 
-				// Estimate readability and sort with most readable first.
+				// Estimate readability and sort with *least* readable first.
 				$.map(articles, function (article) {
-					if (article.extract) {
-						article.readability = Readability.score(article.extract);
-					} else {
-						// Naughty magic number to cause unanalyzed articles to
-						// sink to the bottom of the list.
-						article.readability = 0;
-					}
+					article.readability = Readability.score(article.extract);
 				});
 				articles = articles.sort(function (a, b) {
-					return b.readability - a.readability;
+					return a.readability - b.readability;
 				});
 
 				displayArticles(articles);
