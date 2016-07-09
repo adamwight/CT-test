@@ -16,4 +16,5 @@ ratings:
   - "*.css"
   - "*.js"
 exclude_paths:
+  - doc
   - lib
