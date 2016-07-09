@@ -1,0 +1,78 @@
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, extracts.js: Extract the first paragraph, not the
+	entire section.
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js: Better fix for the autocomplete bug Prevents the menu from appearing in a hung state after <enter> key
+	fun.
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js, styles.css: cleanup
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, index.html, styles.css: Decent spinner
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js: Sort *least* readable first
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, categories.js, config.js, extracts.js,
+	index.html, lib/domReady.js, readability.js, renderer.js: docs;
+	cleanup
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, categories.js, config.js, extracts.js: Figure
+	out some things about jsdoc
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js, categories.js, config.js, extracts.js, readability.js,
+	renderer.js, styles.css: Satisfy lint
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* .codeclimate.yml, .csslintrc, .eslintignore, .eslintrc,
+	README.md, app.js, categories.js: configure linting; begin docs
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js: Reuse thing
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js, categories.js, config.js, extracts.js, index.html,
+	readability.js, renderer.js: Cleanup
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, lib/loading.io-spinner.svg, readability.js: 
+	Shuffle things
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, extracts.js: Get continuation working
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js, index.html, styles.css: UI tweaks
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* app.js, index.html, styles.css: pitiable attempt at styling
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* README.md, app.js, renderer.js, styles.css: click candy; warn when
+	no extract retrieved
+
+2016-07-08  Adam Roses Wight <awight@wikimedia.org>
+
+	* Crude prototype See readme -> limitations for major TODOs.
+
