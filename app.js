@@ -1,7 +1,7 @@
 // Application startup and UI controllers.
 
 requirejs.config({
-	"paths": [".", "lib"],
+	"paths": [".", "lib"]
 });
 
 define([
@@ -11,7 +11,7 @@ define([
 	"readability",
 	"renderer",
 	"lib/jquery.js",
-	"lib/jquery-ui/jquery-ui",
+	"lib/jquery-ui/jquery-ui"
 ], function (config, Categories, Extracts, Readability, Renderer) {
 
 	function refreshCategory() {
@@ -86,7 +86,7 @@ define([
 	$("#category").autocomplete({
 		// Autocomplete the category titles.
 		source: Categories.fetchCompletions,
-		select: refreshCategory,
+		select: refreshCategory
 	}).keyup(function (e) {
 		// Unfortunate workaround, do special stuff for the <enter> key-up.
 		if (e.which === 13) {

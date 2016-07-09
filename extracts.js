@@ -13,9 +13,9 @@ define([
 
 	var Extractor = {
 		fetchArticleExtracts: function (articles, doneCallback, _continueObj, _bufferedArticles, _depth) {
-			var _continueObj = _continueObj || {},
-				_bufferedArticles = _bufferedArticles || [],
-				_depth = 0;
+			_continueObj = _continueObj || {};
+			_bufferedArticles = _bufferedArticles || [];
+			_depth = 0;
 
 			// (Seems buggy that exlimit defaults to 1?)
 			var pageids = $.map(articles, function (article) { return article.pageid; }),

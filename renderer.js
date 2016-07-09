@@ -4,7 +4,7 @@ define([
 	// FIXME: text loader plugin not working...
 	//"text!article.html.mustache",
 	"lib/mustache.js",
-	"lib/jquery.js",
+	"lib/jquery.js"
 ], function (Mustache) {
 
 	// See fixme above.
@@ -25,6 +25,6 @@ define([
 		formatArticleLine: function (article) {
 			var params = article;
 			return Mustache.render(articleTemplate, params);
-		},
+		}
 	};
 });

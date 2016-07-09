@@ -11,7 +11,7 @@
 define([
 	"config",
 	"lib/MediawikiJS.js",
-	"lib/jquery.js",
+	"lib/jquery.js"
 ], function (config) {
 
 	// TODO: reuse config->mwjs glue, move somewhere
@@ -27,9 +27,9 @@ define([
 
 			var _continueObj = _continueObj || {continue: ""},
 				// FIXME: escape category for API?
-				category = "Category:" + category,
+				fullTitle = "Category:" + category,
 				params = {
-					action: 'query', list: 'categorymembers', cmtitle: category, cmlimit: 50
+					action: 'query', list: 'categorymembers', cmtitle: fullTitle, cmlimit: 50
 				};
 			
 			mwjs.send(params, function (data) {
@@ -41,15 +41,14 @@ define([
 					return;
 				}
 
-				// TODO:
-				// * error handling
-				// * logging
+				// Skip subcategories.
 				var articles = data.query.categorymembers,
-					articles = $.grep(articles, function (article) {
+					filteredArticles = $.grep(articles, function (article) {
 						// Only allow real articles, skip subcategories.
 						return !(/^Category:/.exec(article.title));
 					});
-				doneCallback(null, articles);
+
+				doneCallback(null, filteredArticles);
 			});
 		},
 
@@ -57,7 +56,7 @@ define([
 			var params = {
 				'action': "opensearch",
 				'format': "json",
-				'search': "Category:" + request.term,
+				'search': "Category:" + request.term
 			};
 
 			mwjs.send(params, function (data) {
@@ -66,7 +65,7 @@ define([
 				});
 				response(unNamespacedCategoryTitles);
 			});
-		},
+		}
 	};
 });
 

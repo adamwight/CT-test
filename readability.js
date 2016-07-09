@@ -2,7 +2,7 @@
 
 define([
 	"config",
-	"lib/text_statistics.js",
+	"lib/text_statistics.js"
 ], function (config) { return {
 	score: function (text) {
 		var stats = textStatistics(text);

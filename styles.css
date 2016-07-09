@@ -55,7 +55,7 @@
 	left: -1em;
 	color: black;
 	white-space: normal;
-	overflow: normal;
+	overflow: auto;
 	text-overflow: auto;
 }
 
@@ -65,8 +65,8 @@
 
 .footer {
 	z-index: -1;
-	bottom: 0px;
-	right: 0px;
+	bottom: 0;
+	right: 0;
 	position: fixed;
 	margin: 2em;
 }
