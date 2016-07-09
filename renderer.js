@@ -18,13 +18,13 @@ define([
 		 *
 		 * FIXME: should pull from the requirejs text loader plugin instead.
 		 */
-		articleTemplate: "<div class=\"article\">" +
-			"<div class=\"title\">{{ title }}</div>" +
-			"<div class=\"score\">({{ readability }})</div>" +
-			"<div class=\"extract\">{{ extract }}{{^ extract }}" +
-				"<span class=\"missing\">** No article extract found **</span>{{/ extract }}" +
-			"</div>" +
-		"</div>",
+		articleTemplate: '<div class="article">' +
+			'<div class="title">{{ title }}</div>' +
+			'<div class="score">({{ readability }})</div>' +
+			'<div class="extract">{{ extract }}{{^ extract }}' +
+				'<span class="missing">** No article extract found **</span>{{/ extract }}' +
+			'</div>' +
+		'</div>',
 
 		/**
 		 * Render a list of articles into HTML.
