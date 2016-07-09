@@ -1,7 +1,3 @@
-/**
- * Retrieve categories from Wikipedia
- */
-
 define([
 	"config",
 	"lib/MediawikiJS.js",
@@ -13,6 +9,8 @@ define([
 		{baseURL: config.baseURL, apiPath: config.apiPath});
 
 	/**
+	 * Retrieve categories from Wikipedia
+	 *
 	 * @exports Categories
 	 */
 	var Categories = {
@@ -20,7 +18,7 @@ define([
 		 * Get all articles in a category.
 		 *
 		 * @param {string} category Title of category.
-		 * @param {module:Categories~fetchCategoryMembersCallback} doneCallback Handle results.
+		 * @param {fetchCategoryMembersCallback} doneCallback Handle results.
 		 */
 		fetchCategoryMembers: function (category, doneCallback) {
 
@@ -76,7 +74,7 @@ define([
 /**
  * Do something with article list.
  *
- * @callback module:Categories~fetchCategoryMembersCallback
+ * @callback fetchCategoryMembersCallback
  * @param {string} error Error message.  True-ish if any of our API calls failed.
- * @param {Array} article objects
+ * @param {Object[]} article objects
  */

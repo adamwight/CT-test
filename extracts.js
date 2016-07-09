@@ -1,7 +1,3 @@
-// Snip article extracts via an API.
-//
-// Note that we're usually fetching the intro, not the first paragraph of the article itself.
-
 define([
 	"config",
 	"lib/MediawikiJS.js",
@@ -11,7 +7,23 @@ define([
 	var mwjs = MediaWikiJS(
 		{baseURL: config.baseURL, apiPath: config.apiPath});
 
+	/**
+	 * Snip article extracts via an API.
+	 *
+	 * Note that we're usually fetching the intro, not the first paragraph of the article itself.
+	 *
+	 * @exports Extractor
+	 */
 	var Extractor = {
+		/**
+		 * Retrieve an initial chunk of each article
+		 *
+		 * @param {Object[]} articles Article objects to be requested from the extraction API.
+		 * @param {fetchArticleExtractsCallback} doneCallback Called with results or an error.
+		 * @param {Object} [_continueObj={}] Internal: used to recurse through continuation responses.
+		 * @param {Object[]} [_bufferedArticles=[]] Internal: accumulate results.
+		 * @param {integer} [_depth=0] Internal: Track recursion depth.
+		 */
 		fetchArticleExtracts: function (articles, doneCallback, _continueObj, _bufferedArticles, _depth) {
 			_continueObj = _continueObj || {};
 			_bufferedArticles = _bufferedArticles || [];
@@ -55,3 +67,11 @@ define([
 	};
 	return Extractor;
 });
+
+/**
+ * Handle article list plus extracts
+ *
+ * @callback fetchArticleExtractsCallback
+ * @param {string} error Error message.  True-ish if any of our API calls failed.
+ * @param {Object[]} article objects, with the `.extract` property set.
+ */

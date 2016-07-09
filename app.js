@@ -14,17 +14,20 @@ define([
 	"readability",
 	"renderer",
 	"lib/jquery.js",
-	"lib/jquery-ui/jquery-ui"
+	"lib/jquery-ui/jquery-ui",
+	"lib/domReady!"
 ], function (config, Categories, Extracts, Readability, Renderer) {
 
-	/** FOO */
+	/**
+	 * Rebuild and display article listing based on the current category title.
+	 */
 	function refreshCategory() {
 		var category = $("#category").val();
 
 		Categories.fetchCategoryMembers(category, function(error, articles) {
 
 			// Clear display and start spinner.
-			$("#article_list").html("<img src=\"lib/loading.io-spnner.svg\" alt=\"working...\" />");
+			$("#article_list").html("<img src=\"lib/loading.io-spinner.svg\" alt=\"working...\" />");
 			$("#error").text("");
 
 			// Check for errors.
@@ -70,38 +73,37 @@ define([
 
 		$("#article_list").html(formatted);
 		$("#error").text("");
-
-		// FIXME: seems silly to have to reattach every time?
-		applyUiFlair();
 	}
 
-	function applyUiFlair() {
+	function attachUiHandlers() {
 		// Articles link to Wikipedia.
-		$(".article").click(function () {
+		$("#article_list").on("click", ".article", function () {
 			var title = $(this).find(".title").text();
 			console.log(title);
 			// TODO: Use more robust title->URL helper.
 			window.location = config.baseURL + "/wiki/" + title;
-			return false;
 		});
-	}
 
-	// Give category input some behaviors.
-	$("#category").autocomplete({
-		// Autocomplete the category titles.
-		source: Categories.fetchCompletions,
-		select: refreshCategory
-	}).keyup(function (e) {
-		// Unfortunate workaround, do special stuff for the <enter> key-up.
-		if (e.which === 13) {
-			$(".ui-menu-item").hide();
+		// Give category input some behaviors.
+		$("#category").autocomplete({
+			// Autocomplete the category titles.
+			source: Categories.fetchCompletions,
+			select: refreshCategory
+		}).keyup(function (e) {
+			// Unfortunate workaround, do special stuff for the <enter> key-up.
+			if (e.which === 13) {
+				$(".ui-menu-item").hide();
+				refreshCategory();
+			}
+		}).change(refreshCategory);
+
+		// Backdoor for debugging: pass parameter "?debug=1".
+		if (/debug/.exec(window.location.href)) {
+			$("#category").val("Pythagoreans");
 			refreshCategory();
 		}
-	}).change(refreshCategory);
-
-	// Backdoor for debugging: pass parameter "?debug=1".
-	if (/debug/.exec(window.location.href)) {
-		$("#category").val("Pythagoreans");
-		refreshCategory();
 	}
+
+	// Initialize
+	attachUiHandlers();
 });
